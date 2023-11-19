@@ -60,13 +60,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Bases.cs" />
     <Compile Include="Assets\Script\Base.cs" />
-    <Compile Include="Assets\Script\ArmedBase.cs" />
-    <Compile Include="Assets\Script\Game.cs" />
-    <Compile Include="Assets\Script\BaddieSpawner.cs" />
-    <Compile Include="Assets\Script\Rocket.cs" />
-    <Compile Include="Assets\Script\Baddie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
