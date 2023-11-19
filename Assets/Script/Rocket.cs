@@ -17,8 +17,20 @@ public class Rocket : MonoBehaviour
         Destroy(this.gameObject, 3f);
     }
 
+    public void Launch(Vector2 direction, float speed)
+    {
+
+        body.AddForce(direction.normalized * speed, ForceMode2D.Impulse);
+    }
+
     void Update()
     {
-        
+        transform.Rotate(Vector3.forward * 5f); // rotate around z-axis i.e. perpendicular to the camera
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        audioSource.PlayOneShot(audioClipArray[1]);
+        Destroy(this.gameObject, .33f); // delay mainly to let the audioclip finish
     }
 }
