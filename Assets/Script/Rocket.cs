@@ -23,7 +23,7 @@ public class Rocket : MonoBehaviour
         body.AddForce(direction.normalized * speed, ForceMode2D.Impulse);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(Vector3.forward * 5f); // rotate around z-axis i.e. perpendicular to the camera
     }
