@@ -14,11 +14,6 @@ public class BaddieSpawner : MonoBehaviour
     [SerializeField]
     private Bases bases;
 
-    private void Start()
-    {
-        StartCoroutine(StartSpawning());
-    }
-
     public IEnumerator StartSpawning()
     {
         // spawn enemy
