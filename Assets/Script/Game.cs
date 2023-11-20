@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using TMPro;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField]
+    private float totalLevelTime = 30f;
+
     private float levelTime;
     private int totalPoints;
 
     [SerializeField]
-    private TMPro.TextMeshProUGUI gameMenuText;
+    private TextMeshProUGUI gameMenuText;
+    [SerializeField]
+    private TextMeshProUGUI timerText;
     [SerializeField]
     private BaddieSpawner spawner;
     
@@ -20,11 +26,6 @@ public class Game : MonoBehaviour
     private Bases bases;
     private bool isRoundOver;
 
-    private void Start()
-    {
-        levelTime = 10f;
-    }
-
     private void Update()
     {
         levelTime -= Time.deltaTime;
@@ -33,6 +34,7 @@ public class Game : MonoBehaviour
             // end round
             CompleteRound();
         }
+        timerText.text = levelTime.ToString("00");
     }
 
     void CompleteRound()
@@ -49,9 +51,8 @@ public class Game : MonoBehaviour
     {
         isRoundOver = false;
         Time.timeScale = 1f;
-        levelTime = 10f;
+        levelTime = totalLevelTime;
         StartCoroutine(spawner.StartSpawning());
         gameMenu.gameObject.SetActive(false);
-
     }
 }
