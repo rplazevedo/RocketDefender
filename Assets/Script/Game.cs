@@ -26,10 +26,12 @@ public class Game : MonoBehaviour
     private Bases bases;
     private bool isRoundOver;
 
+    private int roundNumber = 0;
+
     private void Update()
     {
-        levelTime -= Time.deltaTime;
-        if (levelTime <= 0 && !isRoundOver)
+        levelTime -= Time.deltaTime; 
+        if ((levelTime <= 0 && !isRoundOver) || bases.BaseCount == 0)
         {
             // end round
             CompleteRound();
@@ -40,11 +42,19 @@ public class Game : MonoBehaviour
     void CompleteRound()
     {
         isRoundOver = true;
-        totalPoints += bases.BaseCount * 36;
         spawner.Stop();
         gameMenu.gameObject.SetActive(true);
-        gameMenuText.text = string.Format("{0} bases remaining\n{1} total points", bases.BaseCount, totalPoints);
+        if (roundNumber == 0)
+        {
+            gameMenuText.text = string.Format("Start Game");
+        }
+        else
+        {
+            totalPoints += bases.BaseCount * 36;
+            gameMenuText.text = string.Format("Round {0} Complete!\n{1} bases remaining\n{2} total points", roundNumber, bases.BaseCount, totalPoints);
+        }
         Time.timeScale = 0;
+        roundNumber++;
     }
 
     public void StartNextRound()
@@ -54,5 +64,10 @@ public class Game : MonoBehaviour
         levelTime = totalLevelTime;
         StartCoroutine(spawner.StartSpawning());
         gameMenu.gameObject.SetActive(false);
+    }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
     }
 }
