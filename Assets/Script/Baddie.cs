@@ -5,14 +5,17 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Baddie : MonoBehaviour
 {
+    private AudioSource audioSource;
     [SerializeField]
-    float speed = 3f;
+    private AudioClip audioClip;
 
     private Rigidbody2D body;
     // Start is called before the first frame update
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class Baddie : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Base"))
         {
+            audioSource.PlayOneShot(audioClip);
             collision.gameObject.GetComponent<Base>().Damage(1);
             Debug.Log("Base hit!");
         }

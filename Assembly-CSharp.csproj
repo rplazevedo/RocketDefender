@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\Bases.cs" />
     <Compile Include="Assets\Script\Base.cs" />
     <Compile Include="Assets\Script\ArmedBase.cs" />
+    <Compile Include="Assets\Script\BaddieSpawner.cs" />
     <Compile Include="Assets\Script\Rocket.cs" />
     <Compile Include="Assets\Script\Baddie.cs" />
   </ItemGroup>
