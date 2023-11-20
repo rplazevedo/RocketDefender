@@ -468,6 +468,7 @@ MonoBehaviour:
   health: 0
   rocket: {fileID: 5353035848701911923, guid: cb8f0deb43fedca4f85ec8999a8f38fe, type: 3}
   rocketSpeed: 5
+  fireRate: 0.5
 --- !u!61 &174999294
 BoxCollider2D:
   m_ObjectHideFlags: 0
