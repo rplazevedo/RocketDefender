@@ -13,7 +13,10 @@ public class ArmedBase : Base
     private float fireRate;
     private float shootTime;
 
+    [SerializeField]
+    private Game game;
 
+    private float speedMultiplier;
 
     // Update is called once per frame
     void Update()
@@ -26,11 +29,12 @@ public class ArmedBase : Base
 
     void Fire()
     {
+        speedMultiplier = 1f + (game.roundNumber * 0.2f);
         shootTime = Time.time;
         Rocket rocketInstance = Instantiate(rocket);
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos - transform.position;
-        rocketInstance.Launch(direction, rocketSpeed);
+        rocketInstance.Launch(direction, speedMultiplier * rocketSpeed);
     }
 
 

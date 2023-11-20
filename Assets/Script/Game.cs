@@ -26,12 +26,12 @@ public class Game : MonoBehaviour
     private Bases bases;
     private bool isRoundOver;
 
-    private int roundNumber = 0;
+    public int roundNumber = 0;
 
     private void Update()
     {
         levelTime -= Time.deltaTime; 
-        if ((levelTime <= 0 && !isRoundOver) || bases.BaseCount == 0)
+        if ((levelTime <= 0 || bases.BaseCount == 0) && !isRoundOver)
         {
             // end round
             CompleteRound();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Base : MonoBehaviour
 {
     private AudioSource audioSource;
+    private SpriteRenderer spriteRenderer;
     [SerializeField]
     private AudioClip audioClip;
 
@@ -14,6 +15,7 @@ public class Base : MonoBehaviour
     {
         health = 3;
         audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void Damage(int amount)
@@ -28,6 +30,7 @@ public class Base : MonoBehaviour
 
     private void Die()
     {
+        spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f, 1f);
         Debug.Log("A base died!");
     }
 }

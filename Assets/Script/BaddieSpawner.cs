@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -14,12 +13,17 @@ public class BaddieSpawner : MonoBehaviour
     [SerializeField]
     private Bases bases;
 
+    [SerializeField]
+    private Game game;
+
+    private float speedMultiplier;
+
     public IEnumerator StartSpawning()
     {
         // spawn enemy
         SpawnBaddie();
         // wait a couple of seconds, random
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
+        yield return new WaitForSeconds(Random.Range(1f, 3f - game.roundNumber * 0.2f));
         // start coroutine again
         StartCoroutine(StartSpawning());
     }
@@ -37,7 +41,8 @@ public class BaddieSpawner : MonoBehaviour
 
     void SpawnBaddie()
     {
+        speedMultiplier = 1f + (game.roundNumber * 0.2f);
         Baddie baddieInstance = Instantiate(baddieToSpawn, GetRandomPosition(), Quaternion.identity);
-        baddieInstance.AssignTarget(bases.GetRandomBase(), Random.Range(1f, 3f));
+        baddieInstance.AssignTarget(bases.GetRandomBase(), speedMultiplier * Random.Range(1f, 3f));
     }
 }

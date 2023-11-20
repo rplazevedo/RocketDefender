@@ -469,6 +469,7 @@ MonoBehaviour:
   rocket: {fileID: 5353035848701911923, guid: cb8f0deb43fedca4f85ec8999a8f38fe, type: 3}
   rocketSpeed: 5
   fireRate: 0.5
+  game: {fileID: 610108003}
 --- !u!61 &174999294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1801,12 +1802,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18a34f8fe0c0d34b9905443e803a2ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLevelTime: 30
+  totalLevelTime: 10
   gameMenuText: {fileID: 1016038325}
   timerText: {fileID: 1408786398}
   spawner: {fileID: 1371320487}
   gameMenu: {fileID: 199344578}
   bases: {fileID: 584286910}
+  roundNumber: 0
 --- !u!4 &610108004
 Transform:
   m_ObjectHideFlags: 0
@@ -2139,6 +2141,7 @@ MonoBehaviour:
     type: 3}
   spawnRegionWidth: 5
   bases: {fileID: 584286910}
+  game: {fileID: 610108003}
 --- !u!4 &1371320488
 Transform:
   m_ObjectHideFlags: 0
